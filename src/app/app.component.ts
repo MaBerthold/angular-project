@@ -11,4 +11,24 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'matthias.berthold';
+
+  images = ['house.jpg', 'road.jpg', 'speicherstadt.jpg'];
+  currentImage = 0;
+  showImage = true;
+ 
+  ngOnInit(): void {
+    this.updateImage();
+  }
+
+  updateImage() {
+    setInterval(() => {
+      this.currentImage++;
+      this.currentImage = this.currentImage % this.images.length;
+      this.showImage = false;
+
+      setTimeout(() => {
+        this.showImage = true;
+      }, 10);
+    }, 8000);
+  }
 }
